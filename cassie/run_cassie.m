@@ -10,7 +10,7 @@ function run_cassie()
     startup;
 
     % Load Cassie model and set Initial configuration
-    model = load('cassie_model.mat') ; model = model.model ;
+    model = load('./mat/cassie_model.mat') ; model = model.model ;
 
     % Initial configuration
     x0 = getInitialState(model);
