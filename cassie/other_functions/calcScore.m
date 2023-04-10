@@ -20,7 +20,7 @@ tMax = 5;
 
 
 
-if t < 5
+if t < 5 
     J = 0; % Robot has fallen down
 else
     J = 100*(max(0,(vMax-vNormEnd)) + max(0, (wMax - wNormEnd)) + (tMax - tSettle))/(vMax + wMax + tMax);

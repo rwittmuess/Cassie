@@ -13,7 +13,7 @@ function [x0] = getInitialState(model)
     x0(model.jidx.knee_joint_right) = -1.2 ;
     x0(model.jidx.toe_joint_right) = -1.6 ;
 
-    % Impose constraints
+    % Impose constraints    
     x0(model.jidx.ankle_joint_left) = deg2rad(13) - x0(model.jidx.knee_joint_left) ;
     x0(model.jidx.ankle_joint_right) = deg2rad(13) - x0(model.jidx.knee_joint_right) ;
 
