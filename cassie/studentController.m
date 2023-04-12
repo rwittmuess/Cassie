@@ -14,16 +14,16 @@ function tau = studentController(t, s, model, params)
     Omega_d = -Omega;
     g = 9.81;
 
-    kh = 40000;                     % tune this
-    kv = 14000;                     % tune this
+    kh = 900*4.477;                      % tune this
+    kv = 3000*4.375;                     % tune this
     dh = sqrt(model.M*kh)*2*0.8;
     dv = sqrt(model.M*kv)*2*0.2;
     
-    Kp = diag([kh,kh,kv]);
-    Kd = diag([dh,dh,dv]);
+    Kp = diag([kh,kh*1.48,kv]);
+    Kd = diag([dh,dh*1.52,dv]);
     
-    Kr = eye(3)*100;                % tune this
-    Dr = eye(3)*50;                 % tune this
+    Kr = eye(3)*100*4.9;                % tune this
+    Dr = eye(3)*50*4.34;                 % tune this
     
     R_d = eye(3);
     err_R = 0.5 * skew(R_d'*R - R'*R_d);
@@ -47,7 +47,7 @@ function tau = studentController(t, s, model, params)
     alpha2 = 1e-3;
     alpha3 = 1e-6;
     G_C1= [eye(3) zeros(3)]*G_C;
-    G_C2= [zeros(3) eye(3)]*G_C;
+    G_C2= [zeros(3) eye(3)]*G_C;    
     H = G_C1'*G_C1 * (alpha1*2) + G_C2'*G_C2 * (alpha2*2) + eye(12) * (alpha3*2);
     f = F_GA(1:3)'*G_C1*(-alpha1*2) + F_GA(4:6)'*G_C2*(-alpha2*2);
 
@@ -59,7 +59,7 @@ function tau = studentController(t, s, model, params)
     A = zeros(4,12);
     A(sub2ind(size(A),1:4,3:3:12)) = -1;
     A = [A; -blkdiag(n,n,n,n)];
-    b  = zeros(20,1);
+    b  = zeros(20,1);   
     
     Aeq = [];
     beq = [];
