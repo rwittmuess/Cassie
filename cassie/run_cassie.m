@@ -19,8 +19,8 @@ function run_cassie()
     [ctrl, student_data] = student_setup(x0, model);
 
     % ODE options
-    time_inter = [0 1] ;
-    odeopts = odeset('Events', @falldetect);
+    time_inter = [0 5] ;
+    odeopts = odeset('Events', @falldetect, 'AbsTol',0.01, 'RelTol',0.01);
     externalForce_fun = @ExternalForce ;
     % Add any student-requested Integrators
     x0 = [x0; zeros(ctrl.N_integrators, 1)] ;

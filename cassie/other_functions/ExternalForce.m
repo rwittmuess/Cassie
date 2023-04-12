@@ -12,7 +12,7 @@ function f_ext = ExternalForce(t, q,model)
 if t > 0.1
     F_pert =       [0 0 0            0 0 0]';
 else
-    F_pert =       [0 0 0            100 0 0]';
+    F_pert =       [0 0 0            0 0 0]';
 end
 
 % Without being too specific on the test cases, if your controller works 
